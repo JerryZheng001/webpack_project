@@ -8,6 +8,7 @@
 
 const { resolve } = require('path');
 const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -174,6 +175,15 @@ module.exports = {
             filename: '[name].css', //输出文件名 
             chunkFilename: '[id].css', //模块名
         }),
+        //配置插件
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            jquery: "jquery",
+            "window.jQuery": "jquery",
+            "window.$": "jquery",
+        })
+
 
     ],
 
